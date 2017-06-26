@@ -1,0 +1,43 @@
+var falseyValues = [
+    "false",
+    "0",
+    "null",
+    "undefined",
+    "NaN",
+    "\"\""
+];
+
+var truthyValues = [
+    "\"Goodbye, World!\"",
+    "1",
+    "true",
+    "[]",
+    "{name: \"Simple Simon\"}"
+];
+
+function shuffleArray(array) {
+    for (let i = array.length; i; i--) {
+        const randomIndex = Math.floor(Math.random() * i);
+        [array[i - 1], array[randomIndex]] = [array[randomIndex], array[i - 1]];
+    };
+};
+
+function questionMachine(stringRepresentation, booleanValue) {
+    return {
+        stringRepresentation: stringRepresentation,
+        booleanValue: booleanValue,
+        correct: false
+    };
+};
+
+const truthyObjects = truthyValues.map(function(string) {
+    return questionMachine(string, true)
+});
+va falseyObjects = falseyValues.map(function(string) {
+    return questionMachine(string, false)
+});
+var quizArray = truthyObjects.concat(falseyObjects);
+
+shuffleArray(quizArray);
+
+console.log(quizArray);
